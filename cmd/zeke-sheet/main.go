@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/ecshreve/zeke-sheet/internal/client"
 	"github.com/ecshreve/zeke-sheet/pkg/creator"
+	"github.com/kr/pretty"
 )
 
 func main() {
 	bernerd := creator.CreateCharacter()
-	client.RunClient(bernerd)
+	pretty.Print(bernerd)
+	//client.RunClient(bernerd)
 }

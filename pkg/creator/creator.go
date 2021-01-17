@@ -5,18 +5,33 @@ import (
 )
 
 func CreateCharacter() *ch.Character {
-	as := initializeAbilityScores()
-
-	return &ch.Character{
-		Name:          "Bernerd",
-		Race:          "Elf",
-		Class:         "Monk",
-		Level:         7,
-		AbilityScores: as,
+	ps := map[ch.SkillName]bool{
+		ch.Acrobatics:    true,
+		ch.Insight:       true,
+		ch.Investigation: true,
+		ch.Perception:    true,
+		ch.Religion:      true,
 	}
+	as := getInitialAbilityScores()
+	am := getAbilityModifiers(as)
+
+	c := &ch.Character{
+		Name:             "Bernerd",
+		Race:             "Elf",
+		Class:            "Monk",
+		Level:            7,
+		ProficiencyBonus: 3,
+		AbilityScores:    as,
+		AbilityModifiers: am,
+		ProficientSkills: ps,
+	}
+
+	c.PopulateSkills()
+
+	return c
 }
 
-func initializeAbilityScores() []*ch.AbilityScore {
+func getInitialAbilityScores() []*ch.AbilityScore {
 	abilities := []*ch.AbilityScore{
 		ch.NewAbilityScore(ch.Strength, 11, 1),
 		ch.NewAbilityScore(ch.Dexterity, 14, 4),
@@ -27,4 +42,12 @@ func initializeAbilityScores() []*ch.AbilityScore {
 	}
 
 	return abilities
+}
+
+func getAbilityModifiers(as []*ch.AbilityScore) map[ch.Ability]int {
+	abilityModifiers := make(map[ch.Ability]int)
+	for _, a := range as {
+		abilityModifiers[a.Ability] = a.Modifier
+	}
+	return abilityModifiers
 }
