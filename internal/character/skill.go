@@ -1,5 +1,7 @@
 package character
 
+import "fmt"
+
 type SkillName int
 
 const (
@@ -118,4 +120,25 @@ func (c *Character) GetSkill(s SkillName) *Skill {
 		Proficient: proficient,
 		Modifier:   abilityMod,
 	}
+}
+
+func (s *Skill) PrettyPrint() string {
+	profCheckbox := "☐"
+	if s.Proficient {
+		profCheckbox = "◆" //"☑︎"
+	}
+
+	modSign := "+"
+	modVal := s.Modifier
+	if s.Modifier < 0 {
+		modSign = "-"
+		modVal *= -1
+	}
+
+	spacer := "\t"
+	if len(s.SkillName.String()) < 8 {
+		spacer = "\t\t"
+	}
+
+	return fmt.Sprintf("%s  %s%d\t%s%s%s", profCheckbox, modSign, modVal, s.SkillName, spacer, s.Ability)
 }
