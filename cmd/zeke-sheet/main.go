@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/ecshreve/zeke-sheet/internal/client"
+)
 
 func main() {
-	fmt.Println("hello world")
+	client.RunClient()
 }
