@@ -9,5 +9,7 @@ type Character struct {
 	AbilityScores    []*AbilityScore
 	AbilityModifiers map[Ability]int
 	ProficientSkills map[SkillName]bool
+	ProficientSaves  map[Ability]bool
 	Skills           []*Skill
+	SavingThrows     []*SavingThrow
 }

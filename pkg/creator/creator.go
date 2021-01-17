@@ -5,13 +5,19 @@ import (
 )
 
 func CreateCharacter() *ch.Character {
-	ps := map[ch.SkillName]bool{
+	profSkills := map[ch.SkillName]bool{
 		ch.Acrobatics:    true,
 		ch.Insight:       true,
 		ch.Investigation: true,
 		ch.Perception:    true,
 		ch.Religion:      true,
 	}
+
+	profSaves := map[ch.Ability]bool{
+		ch.Strength:  true,
+		ch.Dexterity: true,
+	}
+
 	as := getInitialAbilityScores()
 	am := getAbilityModifiers(as)
 
@@ -23,10 +29,12 @@ func CreateCharacter() *ch.Character {
 		ProficiencyBonus: 3,
 		AbilityScores:    as,
 		AbilityModifiers: am,
-		ProficientSkills: ps,
+		ProficientSkills: profSkills,
+		ProficientSaves:  profSaves,
 	}
 
 	c.PopulateSkills()
+	c.PopulateSavingThrows()
 
 	return c
 }
