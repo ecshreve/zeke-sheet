@@ -1,6 +1,9 @@
 package client
 
-import "github.com/rivo/tview"
+import (
+	ch "github.com/ecshreve/zeke-sheet/internal/character"
+	"github.com/rivo/tview"
+)
 
 var (
 	app         *tview.Application
@@ -8,7 +11,7 @@ var (
 	abilityFlex *tview.Flex
 )
 
-func RunClient() {
+func RunClient(c *ch.Character) {
 	app = tview.NewApplication()
 
 	infoFlex = tview.NewFlex().SetDirection(tview.FlexColumn)
@@ -16,6 +19,10 @@ func RunClient() {
 
 	infoFlex.SetBorder(true).SetTitle(" info ").SetBorderPadding(1, 1, 1, 1)
 	abilityFlex.SetBorder(true).SetTitle(" abilities ").SetBorderPadding(1, 1, 1, 1)
+
+	for _, as := range c.AbilityScores {
+		abilityFlex.AddItem(BuildAbilityScoreWidget(as), 0, 1, false)
+	}
 
 	flex := tview.NewFlex().
 		AddItem(tview.NewFlex().SetDirection(tview.FlexRow).
