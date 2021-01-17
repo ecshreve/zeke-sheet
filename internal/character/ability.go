@@ -1,6 +1,8 @@
 package character
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Ability int
 
@@ -40,4 +42,34 @@ func NewAbilityScore(a Ability, b, m int) *AbilityScore {
 		Base:     b,
 		Modifier: m,
 	}
+}
+
+// PrettyPrint returns a string representation of an AbilityScore to in the TUI.
+//
+// ┌────────┐
+// │   +2   │
+// └─|────|─┘
+//   | 18 |
+//   └────┘
+func (as *AbilityScore) PrettyPrint() string {
+	modSign := "+"
+	modVal := as.Modifier
+	if as.Modifier < 0 {
+		modSign = "-"
+		modVal *= -1
+	}
+
+	totVal := as.Base + as.Modifier
+	buf := ""
+	if totVal < 10 {
+		buf = " "
+	}
+
+	r1 := "┌────────┐\n"
+	r2 := fmt.Sprintf("│   %s%d   │\n", modSign, modVal)
+	r3 := "└─┐────┌─┘\n"
+	r4 := fmt.Sprintf("  │ %s%d │  \n", buf, totVal)
+	r5 := "  └────┘  \n"
+
+	return r1 + r2 + r3 + r4 + r5
 }
