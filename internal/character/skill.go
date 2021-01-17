@@ -125,7 +125,7 @@ func (c *Character) GetSkill(s SkillName) *Skill {
 func (s *Skill) PrettyPrint() string {
 	profCheckbox := "☐"
 	if s.Proficient {
-		profCheckbox = "◆" //"☑︎"
+		profCheckbox = "◆"
 	}
 
 	modSign := "+"
