@@ -8,26 +8,20 @@ type SavingThrow struct {
 	Modifier   int
 }
 
-func (c *Character) PopulateSavingThrows() {
-	var saves []*SavingThrow
-	for _, a := range c.AbilityScores {
-		p := c.ProficientSaves[a.Ability]
-		s := c.GetSavingThrow(a.Ability, p)
-		saves = append(saves, s)
-	}
-	c.SavingThrows = saves
+func (st SavingThrow) String() string {
+	return fmt.Sprintf("%v : Proficient: %t\t Modifier: %d", st.Ability, st.Proficient, st.Modifier)
 }
 
-func (c *Character) GetSavingThrow(a Ability, p bool) *SavingThrow {
-	mod := c.AbilityScores[a].Modifier
-	if p {
-		mod += c.ProficiencyBonus
+func NewSavingThrow(a *AbilityScore, proficient bool, proficiencyBonus int) *SavingThrow {
+	modifier := a.Modifier
+	if proficient {
+		modifier += proficiencyBonus
 	}
 
 	return &SavingThrow{
-		Ability:    a,
-		Proficient: p,
-		Modifier:   mod,
+		Ability:    a.Ability,
+		Proficient: proficient,
+		Modifier:   modifier,
 	}
 }
 

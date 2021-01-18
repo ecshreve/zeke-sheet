@@ -19,5 +19,15 @@ func GetTestCharacter() *Character {
 	}
 	c.AbilityScores = abilityScores
 
+	savingThrows := map[Ability]*SavingThrow{
+		Strength:     NewSavingThrow(abilityScores[Strength], true, 3),
+		Dexterity:    NewSavingThrow(abilityScores[Dexterity], true, 3),
+		Constitution: NewSavingThrow(abilityScores[Constitution], false, 3),
+		Intelligence: NewSavingThrow(abilityScores[Intelligence], false, 3),
+		Wisdom:       NewSavingThrow(abilityScores[Wisdom], false, 3),
+		Charisma:     NewSavingThrow(abilityScores[Charisma], false, 3),
+	}
+	c.SavingThrows = savingThrows
+
 	return c
 }

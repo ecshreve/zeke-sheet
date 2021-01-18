@@ -42,8 +42,10 @@ type Character struct {
 	//  - Charisma:  force of Personality
 	AbilityScores map[Ability]*AbilityScore
 
+	// SavingThrows (sometimes just called a "save") represents an attempt to
+	// resist a spell, a trap, a poison, a disease, or similar threat.
+	SavingThrows map[Ability]*SavingThrow
+
 	ProficientSkills map[SkillName]bool
-	ProficientSaves  map[Ability]bool
 	Skills           []*Skill
-	SavingThrows     []*SavingThrow
 }
