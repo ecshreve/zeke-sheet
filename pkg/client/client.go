@@ -23,6 +23,8 @@ func RunClient(c *ch.Character) {
 	abilityFlex.SetBorder(true).SetTitle(" abilities ").SetBorderPadding(1, 1, 1, 1)
 	skillFlex.SetBorder(true).SetTitle(" skills ").SetBorderPadding(1, 1, 1, 1)
 
+	infoFlex.AddItem(BuildInfoWidget(c), 0, 1, false)
+
 	for _, as := range c.AbilityScores {
 		abilityFlex.AddItem(BuildAbilityScoreWidget(as), 0, 1, false)
 	}
@@ -33,7 +35,7 @@ func RunClient(c *ch.Character) {
 		AddItem(tview.NewFlex().SetDirection(tview.FlexRow).
 			AddItem(infoFlex, 0, 1, false).
 			AddItem(abilityFlex, 0, 1, false).
-			AddItem(skillFlex, 0, 1, false), 0, 5, false)
+			AddItem(skillFlex, 0, 2, false), 0, 5, false)
 
 	if err := app.SetRoot(flex, true).Run(); err != nil {
 		panic(err)

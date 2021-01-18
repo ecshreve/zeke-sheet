@@ -145,10 +145,5 @@ func (s *Skill) PrettyPrint() string {
 		modVal *= -1
 	}
 
-	spacer := "\t"
-	if len(s.SkillName.String()) < 8 {
-		spacer = "\t\t"
-	}
-
-	return fmt.Sprintf("%s  %s%d\t%s%s%s", profCheckbox, modSign, modVal, s.SkillName, spacer, s.Ability)
+	return fmt.Sprintf("%s  %s  %s%d\t%s", profCheckbox, s.Ability, modSign, modVal, s.SkillName)
 }
