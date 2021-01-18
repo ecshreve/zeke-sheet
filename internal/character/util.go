@@ -29,5 +29,27 @@ func GetTestCharacter() *Character {
 	}
 	c.SavingThrows = savingThrows
 
+	skills := map[SkillName]*Skill{
+		Acrobatics:     NewSkill(Acrobatics, true, 3, abilityScores),
+		AnimalHandling: NewSkill(AnimalHandling, false, 3, abilityScores),
+		Arcana:         NewSkill(Arcana, false, 3, abilityScores),
+		Athletics:      NewSkill(Athletics, false, 3, abilityScores),
+		Deception:      NewSkill(Deception, false, 3, abilityScores),
+		History:        NewSkill(History, false, 3, abilityScores),
+		Insight:        NewSkill(Insight, true, 3, abilityScores),
+		Intimidation:   NewSkill(Intimidation, false, 3, abilityScores),
+		Investigation:  NewSkill(Investigation, true, 3, abilityScores),
+		Medicine:       NewSkill(Medicine, false, 3, abilityScores),
+		Nature:         NewSkill(Nature, false, 3, abilityScores),
+		Perception:     NewSkill(Perception, true, 3, abilityScores),
+		Performance:    NewSkill(Performance, false, 3, abilityScores),
+		Persuasion:     NewSkill(Persuasion, false, 3, abilityScores),
+		Religion:       NewSkill(Religion, true, 3, abilityScores),
+		SleightOfHand:  NewSkill(SleightOfHand, false, 3, abilityScores),
+		Stealth:        NewSkill(Stealth, false, 3, abilityScores),
+		Survival:       NewSkill(Survival, false, 3, abilityScores),
+	}
+	c.Skills = skills
+
 	return c
 }

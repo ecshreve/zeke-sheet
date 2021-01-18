@@ -46,6 +46,7 @@ type Character struct {
 	// resist a spell, a trap, a poison, a disease, or similar threat.
 	SavingThrows map[Ability]*SavingThrow
 
-	ProficientSkills map[SkillName]bool
-	Skills           []*Skill
+	// Skills represents a specific aspect of an ability score, and a character's
+	// proficiency in a skill demonstrates a focus on that aspect.
+	Skills map[SkillName]*Skill
 }

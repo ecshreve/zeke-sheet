@@ -97,28 +97,22 @@ type Skill struct {
 	Modifier   int
 }
 
-func (c *Character) PopulateSkills() {
-	var skills []*Skill
-	for _, sn := range SkillNames {
-		skills = append(skills, c.GetSkill(sn))
-	}
-	c.Skills = skills
+func (sk Skill) String() string {
+	return fmt.Sprintf("%v : Proficient: %t\t Modifier: %d\tAbility: %v", sk.SkillName, sk.Proficient, sk.Modifier, sk.Ability)
 }
 
-func (c *Character) GetSkill(s SkillName) *Skill {
+func NewSkill(s SkillName, proficient bool, proficiencyBonus int, abilityScores map[Ability]*AbilityScore) *Skill {
 	ability := SkillToAbility[s]
-	abilityMod := c.AbilityScores[ability].Modifier
-	proficient := c.ProficientSkills[s]
-
+	modifier := abilityScores[ability].Modifier
 	if proficient {
-		abilityMod += c.ProficiencyBonus
+		modifier += proficiencyBonus
 	}
 
 	return &Skill{
 		SkillName:  s,
 		Ability:    ability,
 		Proficient: proficient,
-		Modifier:   abilityMod,
+		Modifier:   modifier,
 	}
 }
 
