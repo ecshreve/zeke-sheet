@@ -46,11 +46,11 @@ func NewAbilityScore(a Ability, b, m int) *AbilityScore {
 
 // PrettyPrint returns a string representation of an AbilityScore to in the TUI.
 //
-// ┌────────┐
-// │   +2   │
-// └─|────|─┘
-//   | 18 |
-//   └────┘
+// 	┌────────┐
+// 	│   +2   │
+// 	└─|────|─┘
+// 	  | 18 |
+// 	  └────┘
 func (as *AbilityScore) PrettyPrint() string {
 	modSign := "+"
 	modVal := as.Modifier

@@ -14,7 +14,7 @@ type Character struct {
 	// Proficiency Bonus represents your experience from a roleplaying POV.
 	ProficiencyBonus int
 
-	// Speed determines	how	far	you	can	move when traveling	and	fighting.
+	// Speed determines how far you can move when traveling and fighting.
 	Speed int
 
 	// Inspiration is a rule the game master can use to reward you for playing
