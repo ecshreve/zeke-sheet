@@ -25,6 +25,8 @@ const (
 	Survival
 )
 
+// SkillNames is a slice of SkillName in alphabetical order, this is the order
+// we'll want use for the TUI.
 var SkillNames = []SkillName{
 	Acrobatics,
 	AnimalHandling,
@@ -46,6 +48,7 @@ var SkillNames = []SkillName{
 	Survival,
 }
 
+// String imiplements the Stringer interface for the SkillName type.
 func (sn SkillName) String() string {
 	return [...]string{
 		"Acrobatics",
@@ -69,6 +72,8 @@ func (sn SkillName) String() string {
 	}[sn]
 }
 
+// SkillToAbility is a map of each SkillName to it's associated Ability. This
+// map is mainly for convenience.
 var SkillToAbility = map[SkillName]Ability{
 	Acrobatics:     Dexterity,
 	AnimalHandling: Wisdom,
@@ -90,6 +95,8 @@ var SkillToAbility = map[SkillName]Ability{
 	Survival:       Wisdom,
 }
 
+// Skill represents a specific aspect of an ability score, if a character is
+// proficienct in a skill, that demonstrates a focus on that aspect.
 type Skill struct {
 	SkillName
 	Ability
@@ -97,10 +104,12 @@ type Skill struct {
 	Modifier   int
 }
 
+// String implements the Stringer interface for the Skill type.
 func (sk Skill) String() string {
 	return fmt.Sprintf("%v : Proficient: %t\t Modifier: %d\tAbility: %v", sk.SkillName, sk.Proficient, sk.Modifier, sk.Ability)
 }
 
+// NewSkill returns a pointer to a Skill based on the given values.
 func NewSkill(s SkillName, proficient bool, proficiencyBonus int, abilityScores map[Ability]*AbilityScore) *Skill {
 	ability := SkillToAbility[s]
 	modifier := abilityScores[ability].Modifier
@@ -116,6 +125,13 @@ func NewSkill(s SkillName, proficient bool, proficiencyBonus int, abilityScores 
 	}
 }
 
+// PrettyPrint returns a friendly string representation of a Skill to
+// use in the TUI. Printing out a few Skills would look like this:
+//
+// 	◆ +7	Acrobatics	DEX
+// 	☐ +2	AnimalHandling	WIS
+// 	☐ +0	Arcana		INT
+// 	...
 func (s *Skill) PrettyPrint() string {
 	profCheckbox := "☐"
 	if s.Proficient {
