@@ -32,8 +32,16 @@ type Character struct {
 	// the shield you carry, and your Dexterity modifier.
 	ArmorClass int
 
-	AbilityScores    []*AbilityScore
-	AbilityModifiers map[Ability]int
+	// AbilityScores describes a quick description of the character's physical
+	// and mental characteristics:
+	//  - Strength: physical power
+	//  - Dexterity:  agility
+	//  - Constitution:  endurance
+	//  - Intelligenc:  reasoning and memory
+	//  - Wisdom:  Perception and Insight
+	//  - Charisma:  force of Personality
+	AbilityScores map[Ability]*AbilityScore
+
 	ProficientSkills map[SkillName]bool
 	ProficientSaves  map[Ability]bool
 	Skills           []*Skill

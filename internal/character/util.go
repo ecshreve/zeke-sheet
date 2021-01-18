@@ -9,23 +9,13 @@ func GetTestCharacter() *Character {
 		ProficiencyBonus: 3,
 	}
 
-	abilityModifiers := map[Ability]int{
-		Strength:     1,
-		Dexterity:    4,
-		Constitution: 1,
-		Intelligence: 0,
-		Wisdom:       2,
-		Charisma:     -1,
-	}
-	c.AbilityModifiers = abilityModifiers
-
-	abilityScores := []*AbilityScore{
-		NewAbilityScore(Strength, 11, c.AbilityModifiers[Strength]),
-		NewAbilityScore(Dexterity, 14, c.AbilityModifiers[Dexterity]),
-		NewAbilityScore(Constitution, 12, c.AbilityModifiers[Constitution]),
-		NewAbilityScore(Intelligence, 11, c.AbilityModifiers[Intelligence]),
-		NewAbilityScore(Wisdom, 13, c.AbilityModifiers[Wisdom]),
-		NewAbilityScore(Charisma, 9, c.AbilityModifiers[Charisma]),
+	abilityScores := map[Ability]*AbilityScore{
+		Strength:     NewAbilityScore(Strength, 11, 1),
+		Dexterity:    NewAbilityScore(Dexterity, 14, 4),
+		Constitution: NewAbilityScore(Constitution, 12, 1),
+		Intelligence: NewAbilityScore(Intelligence, 11, 0),
+		Wisdom:       NewAbilityScore(Wisdom, 13, 2),
+		Charisma:     NewAbilityScore(Charisma, 9, -1),
 	}
 	c.AbilityScores = abilityScores
 

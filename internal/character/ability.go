@@ -33,11 +33,7 @@ type AbilityScore struct {
 }
 
 func (as AbilityScore) String() string {
-	buf := "\t"
-	if as.Base+as.Modifier < 10 {
-		buf = "\t\t"
-	}
-	return fmt.Sprintf("%v : Base: %d%s Modifier: %d\t Total: %d", as.Ability, as.Base, buf, as.Modifier, as.Base+as.Modifier)
+	return fmt.Sprintf("%v : Base: %d\t Modifier: %d\t Total: %d", as.Ability, as.Base, as.Modifier, as.Base+as.Modifier)
 }
 
 func NewAbilityScore(a Ability, b, m int) *AbilityScore {

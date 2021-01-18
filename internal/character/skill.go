@@ -107,7 +107,7 @@ func (c *Character) PopulateSkills() {
 
 func (c *Character) GetSkill(s SkillName) *Skill {
 	ability := SkillToAbility[s]
-	abilityMod := c.AbilityModifiers[ability]
+	abilityMod := c.AbilityScores[ability].Modifier
 	proficient := c.ProficientSkills[s]
 
 	if proficient {

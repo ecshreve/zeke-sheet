@@ -19,7 +19,7 @@ func (c *Character) PopulateSavingThrows() {
 }
 
 func (c *Character) GetSavingThrow(a Ability, p bool) *SavingThrow {
-	mod := c.AbilityModifiers[a]
+	mod := c.AbilityScores[a].Modifier
 	if p {
 		mod += c.ProficiencyBonus
 	}
