@@ -5,7 +5,7 @@ import (
 
 	"github.com/rivo/tview"
 
-	ch "github.com/ecshreve/zeke-sheet/internal/character"
+	ch "github.com/ecshreve/zeke-sheet/pkg/character"
 )
 
 func BuildAbilityScoreWidget(as *ch.AbilityScore) *tview.TextView {

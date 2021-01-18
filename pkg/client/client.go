@@ -1,7 +1,7 @@
 package client
 
 import (
-	ch "github.com/ecshreve/zeke-sheet/internal/character"
+	ch "github.com/ecshreve/zeke-sheet/pkg/character"
 	"github.com/rivo/tview"
 )
 

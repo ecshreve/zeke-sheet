@@ -3,14 +3,14 @@ package client
 import (
 	"strings"
 
-	ch "github.com/ecshreve/zeke-sheet/internal/character"
+	ch "github.com/ecshreve/zeke-sheet/pkg/character"
 	"github.com/rivo/tview"
 )
 
-func BuildSkillsWidget(skills []*ch.Skill) *tview.TextView {
+func BuildSkillsWidget(skills map[ch.SkillName]*ch.Skill) *tview.TextView {
 	var skillStrs []string
-	for _, skill := range skills {
-		skillStrs = append(skillStrs, skill.PrettyPrint())
+	for _, skill := range ch.SkillNames {
+		skillStrs = append(skillStrs, skills[skill].PrettyPrint())
 	}
 
 	skillStr := strings.Join(skillStrs, "\n")
