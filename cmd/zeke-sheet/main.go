@@ -1,15 +1,23 @@
 package main
 
 import (
+	"github.com/davecgh/go-spew/spew"
 	"github.com/ecshreve/zeke-sheet/internal/character"
-	"github.com/ecshreve/zeke-sheet/internal/client"
 )
 
 func main() {
+	ss := spew.ConfigState{
+		Indent:                  "\t",
+		DisableCapacities:       true,
+		DisablePointerAddresses: true,
+	}
+
 	bernerd := character.GetTestCharacter()
-	//pretty.Print(bernerd)
+
+	ss.Dump(bernerd)
+
 	// for _, s := range bernerd.Skills {
 	// 	fmt.Println(s.PrettyPrint())
 	// }
-	client.RunClient(bernerd)
+	//client.RunClient(bernerd)
 }

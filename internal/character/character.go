@@ -1,19 +1,18 @@
 package character
 
 type Character struct {
-	Name             string
-	Race             string
-	Class            string
-	Level            int
-	ProficiencyBonus int
-	AbilityScores    []*AbilityScore
-	AbilityModifiers map[Ability]int
-	ProficientSkills map[SkillName]bool
-	ProficientSaves  map[Ability]bool
-	Skills           []*Skill
-	SavingThrows     []*SavingThrow
+	Name  string
+	Level int
 
-	// Refactoring this type... refactored fields are below this comment.
+	// Race is the humanoid species of this character.
+	Race string
+
+	// Class broadly describes the character’s vocation, special talents, and
+	// the tactics the character is most likely to employ.
+	Class string
+
+	// Proficiency Bonus represents your experience from a roleplaying POV.
+	ProficiencyBonus int
 
 	// Speed determines	how	far	you	can	move when traveling	and	fighting.
 	Speed int
@@ -32,4 +31,11 @@ type Character struct {
 	// in battle. Things that contribute to your AC include the armor you wear,
 	// the shield you carry, and your Dexterity modifier.
 	ArmorClass int
+
+	AbilityScores    []*AbilityScore
+	AbilityModifiers map[Ability]int
+	ProficientSkills map[SkillName]bool
+	ProficientSaves  map[Ability]bool
+	Skills           []*Skill
+	SavingThrows     []*SavingThrow
 }
