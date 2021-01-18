@@ -32,15 +32,7 @@ type Character struct {
 	// the shield you carry, and your Dexterity modifier.
 	ArmorClass int
 
-	// AbilityScores contains the quick descriptions of the character's physical
-	// and mental characteristics.
 	AbilityScores map[Ability]*AbilityScore
-
-	// SavingThrows (sometimes just called a "save") represents an attempt to
-	// resist a spell, a trap, a poison, a disease, or similar threat.
-	SavingThrows map[Ability]*SavingThrow
-
-	// Skills represents a specific aspect of an ability score, and a character's
-	// proficiency in a skill demonstrates a focus on that aspect.
-	Skills map[SkillName]*Skill
+	SavingThrows  map[Ability]*SavingThrow
+	Skills        map[SkillName]*Skill
 }

@@ -1,5 +1,7 @@
 package character
 
+// GetTestCharacter builds a Character and returns a pointer to it. The test
+// character is my Elf / Monk named Bernerd from my current campaign.
 func GetTestCharacter() *Character {
 	c := &Character{
 		Name:             "Bernerd",
