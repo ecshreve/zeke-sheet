@@ -32,6 +32,10 @@ type Character struct {
 	// the shield you carry, and your Dexterity modifier.
 	ArmorClass int
 
+	HitPointsCurrent   int
+	HitPointsMax       int
+	HitPointsTemporary int
+
 	AbilityScores map[Ability]*AbilityScore
 	SavingThrows  map[Ability]*SavingThrow
 	Skills        map[SkillName]*Skill

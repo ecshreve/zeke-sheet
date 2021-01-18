@@ -4,11 +4,18 @@ package character
 // character is my Elf / Monk named Bernerd from my current campaign.
 func GetTestCharacter() *Character {
 	c := &Character{
-		Name:             "Bernerd",
-		Race:             "Elf",
-		Class:            "Monk",
-		Level:            7,
-		ProficiencyBonus: 3,
+		Name:               "Bernerd",
+		Level:              7,
+		Race:               "Elf",
+		Class:              "Monk",
+		ProficiencyBonus:   3,
+		Speed:              45,
+		Inspiration:        false,
+		InitiativeBonus:    4,
+		ArmorClass:         16,
+		HitPointsCurrent:   45,
+		HitPointsMax:       45,
+		HitPointsTemporary: 0,
 	}
 
 	abilityScores := map[Ability]*AbilityScore{
