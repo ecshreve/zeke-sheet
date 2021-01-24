@@ -1,5 +1,7 @@
 package character
 
+import "fmt"
+
 // GetTestCharacter builds a Character and returns a pointer to it. The test
 // character is my Elf / Monk named Bernerd from my current campaign.
 func GetTestCharacter() *Character {
@@ -61,4 +63,63 @@ func GetTestCharacter() *Character {
 	c.Skills = skills
 
 	return c
+}
+
+// PrettyPrintProficiencyBonus returns a friendly string representation of a
+// proficiency bonus to use in the TUI.
+//
+// 	┌────────┐
+// 	│   +3   │
+// 	└────────┘
+func PrettyPrintProficiencyBonus(pb int) string {
+	r1 := "┌────────┐\n"
+	r2 := fmt.Sprintf("│   +%d   │\n", pb)
+	r3 := "└────────┘\n"
+
+	return r1 + r2 + r3
+}
+
+// PrettyPrintInitiative returns a friendly string representation of an initiative
+// bonus to use in the TUI.
+//
+// 	┌────────┐
+// 	│.. +3 ..│
+// 	└────────┘
+//
+func PrettyPrintInitiative(i int) string {
+	r1 := "┌────────┐\n"
+	r2 := fmt.Sprintf("│.. +%d ..│\n", i)
+	r3 := "└────────┘\n"
+
+	return r1 + r2 + r3
+}
+
+// PrettyPrintSpeed returns a friendly string representation of a walking speed
+// to use in the TUI.
+//
+// 	┌────────┐
+// 	│** 45 **│
+// 	└────────┘
+//
+func PrettyPrintSpeed(s int) string {
+	r1 := "┌────────┐\n"
+	r2 := fmt.Sprintf("│** %d **│\n", s)
+	r3 := "└────────┘\n"
+
+	return r1 + r2 + r3
+}
+
+// PrettyPrintArmorClass returns a friendly string representation of an AC
+// to use in the TUI.
+//
+// 	┌────────┐
+// 	│## 16 ##│
+// 	└────────┘
+//
+func PrettyPrintArmorClass(s int) string {
+	r1 := "┌────────┐\n"
+	r2 := fmt.Sprintf("│## %d ##│\n", s)
+	r3 := "└────────┘\n"
+
+	return r1 + r2 + r3
 }
